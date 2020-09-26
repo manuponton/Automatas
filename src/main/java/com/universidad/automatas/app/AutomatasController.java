@@ -10,7 +10,22 @@ public class AutomatasController {
   @PostMapping
   public boolean isExpresionValid(@RequestBody RegularExpresion regularExpresion ) {
     boolean result = false;
-
-    return regularExpresion.getText().matches("[A-Z]{1}[a-z]");
+    if (regularExpresion.getText().matches("I am[ ][a-zA-Z]+")) {
+      return true;
+    }
+    if (regularExpresion.getText().matches(
+        "[A-Z]{1}[a-zA-Z]+[ ][a-zA-Z]*[ ](are|is|am){1}[ ][a-zA-Z]+")) {
+      return true;
+    }
+    if (regularExpresion.getText().matches("(She |He |It )is (not )?[a-zA-Z]")) {
+      return true;
+    }
+    if (regularExpresion.getText().matches("(You |We |They )are (not )?[a-zA-Z]")) {
+      return true;
+    }
+    if (regularExpresion.getText().matches("")) {// Pregunta
+      return true;
+    }
+    return result;
   }
 }
