@@ -29,7 +29,8 @@ public class AutomatasController {
     if (regularExpresion.getText().matches("Are (you |we |they )[a-zA-Z]")) {
       return true;
     }
-    if (regularExpresion.getText().matches("")) {// Pregunta
+    if (regularExpresion.getText()
+        .matches("[A-Z]{1}[a-zA-Z]+([ ][a-zA-Z]+)?[ ](are|is){1}[ ][a-zA-Z]+")) {
       return true;
     }
     return result;
