@@ -23,6 +23,12 @@ public class AutomatasController {
     if (regularExpresion.getText().matches("(You |We |They )are (not )?[a-zA-Z]")) {
       return true;
     }
+    if (regularExpresion.getText().matches("Is (she |he |it )[a-zA-Z]")) {
+      return true;
+    }
+    if (regularExpresion.getText().matches("Are (you |we |they )[a-zA-Z]")) {
+      return true;
+    }
     if (regularExpresion.getText().matches("")) {// Pregunta
       return true;
     }
