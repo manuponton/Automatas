@@ -8,29 +8,25 @@ import org.springframework.web.bind.annotation.RestController;
 public class AutomatasController {
 
   @PostMapping
-  public boolean isExpresionValid(@RequestBody RegularExpresion regularExpresion ) {
+  public boolean isExpresionValid(@RequestBody RegularExpresion regularExpresion) {
     boolean result = false;
-    if (regularExpresion.getText().matches("I am[ ][a-zA-Z]+")) {
+    // Positive or negative 1th person
+    if (regularExpresion.getText().matches("I\\sam\\s(not\\s)?[a-zA-Z]+")) {
       return true;
     }
-    if (regularExpresion.getText().matches(
-        "[A-Z]{1}[a-zA-Z]+[ ][a-zA-Z]*[ ](are|is|am){1}[ ][a-zA-Z]+")) {
+    if (regularExpresion.getText().matches("(She|He|It)\\sis\\s(not\\s)?[a-zA-Z]+")) {
       return true;
     }
-    if (regularExpresion.getText().matches("(She |He |It )is (not )?[a-zA-Z]")) {
+    if (regularExpresion.getText().matches("(You|We|They)\\sare\\s(not\\s)?[a-zA-Z]+")) {
       return true;
     }
-    if (regularExpresion.getText().matches("(You |We |They )are (not )?[a-zA-Z]")) {
+    if (regularExpresion.getText().matches("Is\\s(she|he|it)\\s([a-zA-Z]+(\\s))+\\?")) {
       return true;
     }
-    if (regularExpresion.getText().matches("Is (she |he |it )[a-zA-Z]")) {
+    if (regularExpresion.getText().matches("Are\\s(you|we|they)\\s([a-zA-Z]+(\\s))+\\?")) {
       return true;
     }
-    if (regularExpresion.getText().matches("Are (you |we |they )[a-zA-Z]")) {
-      return true;
-    }
-    if (regularExpresion.getText()
-        .matches("[A-Z]{1}[a-zA-Z]+([ ][a-zA-Z]+)?[ ](are|is){1}[ ][a-zA-Z]+")) {
+    if (regularExpresion.getText().matches("Am\\s(I)\\s([a-zA-Z]+(\\s))+\\?")) {
       return true;
     }
     return result;

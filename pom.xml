@@ -12,7 +12,7 @@
   <groupId>com.universidad</groupId>
   <artifactId>automatas</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <packaging>war</packaging>
+  <packaging>jar</packaging>
   <name>automatas</name>
   <description>Expresiones regulares</description>
 
