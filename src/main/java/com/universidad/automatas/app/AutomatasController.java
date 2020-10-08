@@ -15,10 +15,10 @@ public class AutomatasController {
     if (regularExpresion.getText().matches("I\\sam\\s(not\\s)?[a-zA-Z]+")) {
       return true;
     }
-    if (regularExpresion.getText().matches("(She|He|It)\\sis\\s(not\\s)?[a-zA-Z]+")) {
+    if (regularExpresion.getText().matches("(She|He|It)\\sis\\s(not\\s)?[a-zA-Z ]+")) {
       return true;
     }
-    if (regularExpresion.getText().matches("(You|We|They)\\sare\\s(not\\s)?[a-zA-Z]+")) {
+    if (regularExpresion.getText().matches("(You|We|They)\\sare\\s(not\\s)?[a-zA-Z ]+")) {
       return true;
     }
     if (regularExpresion.getText().matches("Is\\s(she|he|it)\\s([a-zA-Z]+(\\s))+\\?")) {
