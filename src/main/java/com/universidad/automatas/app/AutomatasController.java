@@ -1,5 +1,7 @@
 package com.universidad.automatas.app;
 
+import java.util.Arrays;
+import java.util.List;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,5 +33,40 @@ public class AutomatasController {
       return true;
     }
     return result;
+  }
+
+
+  @PostMapping("/validarGramatica")
+  public String isGramaticalValid(@RequestBody RegularExpresion regularExpresion) {
+    List<String>sustantivosComunes = Arrays.asList("car", "dog");
+    String texto  = regularExpresion.getText();
+    String [] divisionDeCadena =  texto.split(" ");
+    if (divisionDeCadena[0].equals("The")){ //Es sustantivo comun
+      boolean conToBe = false;
+      int posicionToBe = 0;
+      for (int i = 0; i < divisionDeCadena.length; i++){
+        if (divisionDeCadena[i].equals("is") || divisionDeCadena[i].equals("are")) {
+          conToBe = true;
+          posicionToBe = i + 1;
+        }
+      }
+      if (conToBe) {
+        if (posicionToBe > 2 && posicionToBe < divisionDeCadena.length) {
+          String verbo = divisionDeCadena[posicionToBe-1];
+          String sustantivo = texto.split(verbo)[0].trim();
+          for (String sustantivoValue : sustantivosComunes){
+            if(sustantivo.equals("The " + sustantivoValue)){
+              return "Correcto";
+            }
+          }
+          return "Error";
+        } else {
+          return "Error, posición del verbo to be invalida";
+        }
+      } else {
+        return  "Error, no contiene el verbo to be";
+      }
+    }
+    return "No valida";
   }
 }
